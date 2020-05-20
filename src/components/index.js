@@ -1,5 +1,7 @@
-import Logo from './logo';
+import Grid from './grid';
+import Cart from './cart';
 
 export {
-    Logo,
+    Cart,
+    Grid,
 };
