@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 
 import { 
+  Banner,
   Grid,
+  Footer,
+  Header
 } from '../components';
 
 import * as UtilService from '../services/utils';
@@ -9,7 +12,7 @@ import * as Product from '../services/mock'
 
 function HomePage() {
 
-  const [productList, setProductList] = useState(Product.itens);
+  const [productList, setProductList] = useState(Product.mock.catalog);
   const [isMobile, setIsMobile] = useState();
 
   useEffect(() => {
@@ -17,10 +20,15 @@ function HomePage() {
   }, []);
 
   return (
-    <Grid 
-      list={productList}
-      isMobile={isMobile}
-    />
+    <>
+      <Header />
+      <Banner urls={Product.mock.banner} />
+      <Grid 
+        list={productList}
+        isMobile={isMobile}
+      />
+      <Footer />
+    </>
   )
 }
 
