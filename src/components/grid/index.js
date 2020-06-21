@@ -4,23 +4,29 @@ import Cart from '../cart';
 
 import * as S from './styles';
 
-function Grid({ list, isMobile }) {
+function Grid({ addCart, isMobile, list, title }) {
   return (
-    <S.Grid>
-      { list.map((item) => (
-        <Cart 
-          isMobile={isMobile}
-          product={item} 
-          key={item.id}
-          />
-      ))}
-    </S.Grid>
+    <>
+      <S.Title>{title}</S.Title>
+      <S.Grid>
+        { list.map((item) => (
+          <Cart 
+            addCart={addCart}
+            isMobile={isMobile}
+            product={item} 
+            key={item.id}
+            />
+        ))}
+      </S.Grid>
+    </>
   );
 }
 
 Grid.propTypes = {
-  list: PropTypes.array.isRequired,
+  addCart: PropTypes.func.isRequired,
   isMobile: PropTypes.bool.isRequired,
+  list: PropTypes.array.isRequired,
+  title: PropTypes.string.isRequired,
 };
 
 export default Grid;
