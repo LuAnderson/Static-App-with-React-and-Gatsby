@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './reset.css';
+import './global.css';
 import HomePage from './pages';
 import * as serviceWorker from './serviceWorker';
 
