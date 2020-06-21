@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import * as S from './styles';
 
-function Cart({product, isMobile}) {
+function Cart({addCart, product, isMobile}) {
   return (
     <S.Cart isMobile={isMobile}>
         <S.Image src={product.photo}/>
@@ -15,12 +15,13 @@ function Cart({product, isMobile}) {
           </S.Description>
         </S.Info>
         <S.Price>R$ {product.price},00</S.Price>
-        <S.Buy>Comprar</S.Buy>
+        <S.Buy onClick={addCart}>Comprar</S.Buy>
     </S.Cart>
   );
 }
 
 Cart.propTypes = {
+  addCart: PropTypes.func.isRequired,
   product: PropTypes.array.isRequired,
   isMobile: PropTypes.bool.isRequired,
 };
