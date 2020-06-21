@@ -22,7 +22,7 @@ function Cart({addCart, product, isMobile}) {
 
 Cart.propTypes = {
   addCart: PropTypes.func.isRequired,
-  product: PropTypes.array.isRequired,
+  product: PropTypes.object.isRequired,
   isMobile: PropTypes.bool.isRequired,
 };
 
