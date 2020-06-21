@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const Cart = styled.div`
+    background: #fff;
     border: 1px solid lightgray;
     border-radius: 5px;
     height: 340px;
