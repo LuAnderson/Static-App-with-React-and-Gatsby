@@ -14,18 +14,23 @@ function HomePage() {
 
   const [productList, setProductList] = useState(Product.mock.catalog);
   const [isMobile, setIsMobile] = useState();
+  const [countCart, setCountCart] = useState(0);
 
   useEffect(() => {
     setIsMobile(UtilService.deviceIsMobile());
   }, []);
 
+  const addCount = () => setCountCart(countCart + 1);
+
   return (
     <>
-      <Header />
+      <Header countCart={countCart} />
       <Banner urls={Product.mock.banner} />
       <Grid 
-        list={productList}
+        addCart={addCount}
         isMobile={isMobile}
+        list={productList}
+        title='Produtos mais vendidos'
       />
       <Footer />
     </>
