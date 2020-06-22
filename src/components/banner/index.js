@@ -5,14 +5,16 @@ import * as S from './styles';
 
 function Banner({ imageList }) {
   const settings = {
+    autoplay: true,
+    autoplaySpeed: 500,
     dots: true,
     infinite: true,
-    speed: 500,
+    speed: 1000,
     slidesToShow: 1,
     slidesToScroll: 1,
     fade: true,
     lazyLoad: true,
-    pauseOnHover: true
+    pauseOnHover: true,
   };
 
   return (
