@@ -18,7 +18,8 @@ function Header({ countCart, handleChange, searchTerm }) {
           type="search" 
           value={searchTerm}
           />
-        <S.Item>Carrinho 
+        <S.Item>
+          Carrinho 
           {countCart > 0 && <S.Count>{countCart}</S.Count>}
         </S.Item>
       </S.List>

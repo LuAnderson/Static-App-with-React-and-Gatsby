@@ -15,7 +15,7 @@ export const Header = styled.header`
 export const List = styled.ul`
     align-items: center;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     margin: 0 auto;
     max-width: 1130px;
 `;
@@ -24,12 +24,12 @@ export const Logo = styled.img`
     border-radius: 20px;
     height: 40px;
     text-align: start;
-    width: 70%;
+    width: 40%;
 `;
 
 export const Item = styled.li`
     text-align: center;
-    width: 15%;
+    width: 30%;
 `;
 
 
@@ -42,12 +42,13 @@ export const Count = styled.span`
 
 export const Anchor = styled.a`
     text-align: center;
-    width: 15%;
+    width: 30%;
 `;
 
 export const Search = styled.input`
+    border-radius: 20px;
+    margin: 10px 0;
     padding: 5px;
     text-align: center;
     width: 70%;
-    border-radius: 20px;
 `;
