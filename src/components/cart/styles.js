@@ -7,7 +7,7 @@ export const Cart = styled.div`
     height: 340px;
     margin: 20px 10px;
     padding: 20px;
-    width: ${ props => props.isMobile ? '350' : '220' }px;;
+    width: ${ props => props.isMobile ? '350' : '220' }px;
 `;
 
 export const Image = styled.img`
