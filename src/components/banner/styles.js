@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import Slider from "react-slick";
 
 export const Banner = styled.section`
-    margin: 84px 0 40px;
+    margin: 149px 0 40px;
 `;
 
 export const Carousel = styled(Slider)`

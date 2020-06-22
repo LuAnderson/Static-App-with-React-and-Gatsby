@@ -1,11 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-
 import * as S from './styles';
 
-
-function Banner({ urls }) {
+function Banner({ imageList }) {
   const settings = {
     dots: true,
     infinite: true,
@@ -20,10 +18,11 @@ function Banner({ urls }) {
   return (
     <S.Banner>
       <S.Carousel {...settings}>
-        { urls.map((url) => (
+        { imageList.map((url, key) => (
           <S.Image 
-            src={url}
             alt="Banner Principal"
+            key={key}
+            src={url}
           />
         ))}
       </S.Carousel>
@@ -32,7 +31,7 @@ function Banner({ urls }) {
 }
 
 Banner.propTypes = {
-  urls: PropTypes.array.isRequired,
+  imageList: PropTypes.array.isRequired,
 };
 
 export default Banner;
