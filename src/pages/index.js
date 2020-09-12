@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 
 import { 
   Banner,
@@ -8,45 +7,39 @@ import {
   Header
 } from '../components';
 
+import * as ProductService from '../services/product';
 import * as UtilService from '../services/utils';
 
 function HomePage() {
   const [productList, setProductList] = useState([]);
-  const [isMobile, setIsMobile] = useState();
+  const [filteredProduct, setFilteredProduct] = useState([]);
+  const [isMobile, setIsMobile] = useState(UtilService.deviceIsMobile());
   const [countCart, setCountCart] = useState(0);
   const [searchTerm, setSearchTerm] = useState("");
   const [imageList, setImageList] = useState([]);
 
   useEffect(() => {
-    setIsMobile(UtilService.deviceIsMobile());
+    _getDataProduct();
+  }, []);
 
-    const headers = {
-      'Content-Type': 'application/json',
-      'secret-key': '$2b$10$eST7pCHzgmfC3.IEH.rnluPcF0Y..d.0UWqhJREvK1vcAWUtXk3ji'
-    };
+  const _getDataProduct = async () => {
+    const response = await ProductService.getProduct();
 
-    const fetchData = async () => {
-      const responseData = await axios(
-        'https://api.jsonbin.io/b/5eef7171e2ce6e3b2c76ce2e', { headers: headers }
-      );
-  
-      setProductList(responseData.data.catalog);
-      setImageList(responseData.data.banner);
-    };
-
-    fetchData();
-
-    const searchItem = productList.filter(item =>
-      item.name.toLowerCase().includes(searchTerm)
-    );
-
-    setProductList(searchItem);
-  }, [searchTerm]);
+    setProductList(response.catalog);
+    setFilteredProduct(response.catalog);
+    setImageList(response.banner)
+  };
 
   const addCount = () => setCountCart(countCart + 1);
 
   const handleChange = (event) => {
-    setSearchTerm(event.target.value.toLowerCase());
+    const term = event.target.value.toLowerCase();
+    const foundItem = productList.filter((product) =>
+      product.name.toLowerCase().includes(term.toLowerCase())
+    );
+
+    setSearchTerm(term);
+    setFilteredProduct(foundItem);
   };
 
   return (
@@ -60,7 +53,7 @@ function HomePage() {
       <Grid 
         addCart={addCount}
         isMobile={isMobile}
-        list={productList}
+        list={filteredProduct}
         title='Produtos mais vendidos'
       />
       <Footer />
